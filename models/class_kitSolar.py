@@ -1,3 +1,4 @@
+from class_ModeloJSON import ModeloJSON
 import json
 
 class KitSolar:
@@ -66,57 +67,43 @@ class KitSolar:
         )
 
 
-class KitsSolar:
+class KitsSolar(ModeloJSON):
     arquivo_json = "admin/model/KitsSolares.json"
-    lista_obj = []
+
+    @classmethod
+    def inserir(cls, kitSolar):
+        super().inserir(kitSolar)
+
+    @classmethod
+    def listar(cls):
+        return super().listar()
+
+    @classmethod
+    def listar_id(cls, id):
+        return super().listar_id(id)
+
+    @classmethod
+    def atualizar(cls, kitSolar):
+        super().atualizar(kitSolar)
+
+    @classmethod
+    def excluir(cls, kitSolar):
+        super().excluir(kitSolar)
 
     @classmethod
     def abrir(cls):
+        cls.lista_obj = []
         try:
             with open(cls.arquivo_json, "r") as arquivo:
                 arquivo_json = json.load(arquivo)
                 cls.lista_obj = [KitSolar.from_dict(obj) for obj in arquivo_json]
         except FileNotFoundError:
-            cls.lista_obj = []
+            pass
 
     @classmethod
     def salvar(cls):
         with open(cls.arquivo_json, "w") as arquivo:
             json.dump([obj.to_dict() for obj in cls.lista_obj], arquivo, indent=4)
-
-    @classmethod
-    def inserir(cls, kitSolar):
-        cls.lista_obj.append(kitSolar)
-        cls.salvar()
-
-    @classmethod
-    def listar(cls):
-        return cls.lista_obj
-
-    @classmethod
-    def listar_id(cls, id):
-        for obj in cls.lista_obj:
-            if obj.get_id() == id:
-                return obj
-        return None
-
-    @classmethod
-    def atualizar(cls, kitSolar):
-        for i, obj in enumerate(cls.lista_obj):
-            if obj.get_id() == kitSolar.get_id():
-                cls.lista_obj[i] = kitSolar
-                cls.salvar()
-                return
-        raise ValueError("KitSolar não encontrado para atualização")
-
-    @classmethod
-    def excluir(cls, kitSolar):
-        for obj in cls.lista_obj:
-            if obj.get_id() == kitSolar.get_id():
-                cls.lista_obj.remove(obj)
-                cls.salvar()
-                return
-        raise ValueError("KitSolar não encontrado para exclusão")
 
 
 # Exemplo de uso
