@@ -1,7 +1,7 @@
 # Dimensionamento-Solar-CRM
 
 ## Tecnologias
-![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54) ![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white) 
+![Java](https://img.shields.io/badge/Java-ED8B00?style=flat&logo=openjdk&logoColor=white) ![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
 
 ## Descrição
 O projeto Sistema de Dimensionamento Solar e CRM tem como objetivo fornecer uma solução eficiente, integrada e acessível para o dimensionamento de sistemas fotovoltaicos e a gestão do relacionamento com clientes.
